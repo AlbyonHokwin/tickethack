@@ -31,11 +31,17 @@ router.post('/new', (req, res) => {
         })
             .then(trip => {
                 if (trip) {
-                    const newBooking = new Booking({
-                        trip: trip._id,
-                        isPurchased: false,
-                    })
-                    newBooking.save().then(newBooking => res.json({result: true, newBooking}));
+                    Booking.findOne({trip: trip._id})
+                        .then(booking => {
+                            if (booking) res.json({result: false, error: "Trip already bought or put into the cart"});
+                            else {
+                                const newBooking = new Booking({
+                                    trip: trip._id,
+                                    isPurchased: false,
+                                })
+                                newBooking.save().then(newBooking => res.json({result: true, newBooking}));
+                            }
+                        })
                 } else res.json({result: false, error: "No trip found"});
             });
     } else {
@@ -55,7 +61,25 @@ router.get('/cart', (req, res) => {
 });
 
 // Delete selected booking NOT purchased - For cart.html
-// router.delete('/cart/:params???', (req, res) => {});
+router.delete('/cart/:departure&:arrival&:date&:price', (req, res) => {
+    let {departure, arrival, date, price} = req.params;
+    date = new Date(date);
+    price = Number(price);
+
+    Trip.findOne({
+        departure: {$regex: new RegExp(departure, "i")},
+        arrival: {$regex: new RegExp(arrival, "i")},
+        date,
+        price,
+    })
+        .then(trip => {
+            if (trip) {
+                Booking.findOneAndDelete({ trip: trip._id })
+                    .then(deletedBooking => res.json({result: !!deletedBooking}));
+            }
+            else res.json({result: false, error: "Trip not found"});
+        });
+});
 
 // Switch status of isPurchased field from false to true - Booking move from cart to bookings
 router.put('/purchased', (req, res) => {
