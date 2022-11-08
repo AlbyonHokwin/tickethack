@@ -17,7 +17,7 @@ router.get('/search/:departure&:arrival&:day', (req, res) => {
             trips.sort((tripA, tripB) => tripA.date - tripB.date);
             res.json({result: true, trips})
         } else {
-            res.json({result: false});
+            res.json({result: false, error: "No trip match search"});
         }
     });
 });
