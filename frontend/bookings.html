@@ -1,25 +1,42 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Titre de la page</title>
+  <title>Booking</title>
   <link rel="stylesheet" href="bookings.css">
 </head>
+
 <body>
+  <div id="container">
+    <div id="header">
+      <a id="tickethack" href="index.html">Tickethack</a>
+      <div id="cartBooking">
+        <a id="cart" href="cart.html">Cart</a>
+        <a id="booking" href="bookings.html">Bookings</a>
+      </div>
+    </div>
+    <div id="bookingContainer">
+      <div id="notEmptyBooking">
+        <h2 id="bookingHeader">My bookings</h2>
+        <div class="bookingRow">
+          <div class="bookingTravel">Départ > Arrivée</div>
+          <div class="bookingHour">22:10</div>
+          <div class="bookingPrice">127€</div>
+          <div class="bookingDeltaTime">Departure in 5 hours</div>
+        </div>
+        <div id="bookingFooter">
+          <p>Enjoy your travels with Tickethack!</p>
+        </div>
+      </div>
 
-    <header>
-        <nav class="box">
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/index.html">tickethack</a>
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/cart.html">Cart</a>
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/bookings.html">Bookings</a>
-          </nav>
-    </header>
-
-    <div id="container">
-
-
-
-</div>
+      <!-- <div id="emptyBooking">
+        <p>No booking yet.</p>
+        <p>Why not plan a trip?</p>
+      </div> -->
+    </div>
+  </div>
 </body>
+
 </html>

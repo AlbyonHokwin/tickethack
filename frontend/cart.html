@@ -1,29 +1,49 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Titre de la page</title>
+  <title>Cart</title>
   <link rel="stylesheet" href="cart.css">
 </head>
+
 <body>
-
-    <header>
-        <nav class="box">
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/index.html">tickethack</a>
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/cart.html">Cart</a>
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/bookings.html">Bookings</a>
-          </nav>
-    </header>
-
-    <div id="container">
-
-        <div id="result">
-            <p>No tickets in your cart.</p>
-            <p>Why not plan a trip ?</p>
-
+  <div id="container">
+    <div id="header">
+      <a id="tickethack" href="index.html">Tickethack</a>
+      <div id="cartBooking">
+        <a id="cart" href="cart.html">Cart</a>
+        <a id="booking" href="bookings.html">Bookings</a>
+      </div>
+    </div>
+    <div id="cartContainer">
+      <div id="notEmptycart">
+        <h2 id="cartHeader">My cart</h2>
+        <div class="cartRow">
+          <div class="cartTravel">Départ > Arrivée</div>
+          <div class="cartHour">22:10</div>
+          <div class="cartPrice">127€</div>
+          <div class="cartDeltaTime">Departure in 5 hours</div>
         </div>
+        <div class="cartRow">
+          <div class="cartTravel">Départ > Arrivée</div>
+          <div class="cartHour">22:10</div>
+          <div class="cartPrice">127€</div>
+          <div class="cartDeltaTime">Departure in 5 hours</div>
+        </div>
+        <div id="cartFooter">
+          <div id="cartTotal">Total : 127 €</div>
+          <button id="btnPurchase">Purchase</button>
+        </div>
+      </div>
 
-</div>
+      <!-- <div id="emptycart">
+        <p>No tickets in your cart.</p>
+        <p>Why not plan a trip?</p>
+      </div> -->
+    </div>
+  </div>
 </body>
+
 </html>
