@@ -1,0 +1,58 @@
+body{
+    background-color: lightgray;
+
+}
+
+.box{
+    background-color: white;
+    border: 10px solid white;
+    display: flex;
+  justify-content: space-between;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 9;
+  width: 100%;
+  font-family: "Gill Sans", sans-serif;
+  grid-template-columns: 30px auto 30px;
+}
+
+
+
+
+#container{
+    border: 500px white;
+    display: flex;
+  justify-content: space-between;
+  grid-row-start: 2;
+  grid-row-end: 12;
+  background-image:url("/Users/yassinetazit/Desktop/tickethack/frontend/images/background.jpg");
+  background-position: center center;
+}
+
+.trip{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    padding-left: 250px;
+    padding-right: 250px;
+    padding-top: 250px;
+    text-align: left;
+    font-family: "Gill Sans", sans-serif;
+}
+
+.result{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    padding-left: 250px;
+    padding-right: 250px;
+    padding-top: 250px;
+    text-align: right;
+    font-family: "Gill Sans", sans-serif;
+    background-image: url("/Users/yassinetazit/Desktop/tickethack/frontend/images/train.png");
+}
