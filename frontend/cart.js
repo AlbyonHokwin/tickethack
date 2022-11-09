@@ -67,6 +67,7 @@ function filledCart(bookings) {
                         btn.parentNode.remove();
                         tripInCart.splice(i, 1);
                     }
+                    if (!tripInCart[0]) emptyCart();
                 });
         });
     });
