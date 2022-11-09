@@ -5,7 +5,7 @@ const Trip = require('../models/trips');
 
 router.get('/search/:departure&:arrival&:day', (req, res) => {
     let {departure, arrival, day} = req.params;
-    day = new Date(day);
+    day = new Date(+day);
     let nextDay = new Date(day.getTime() + 1000*3600*24);
 
     Trip.find({

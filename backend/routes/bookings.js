@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 router.post('/new', (req, res) => {
     if (checkBody(req.body, ["departure", "arrival", "date", "price"])) {
         let { departure, arrival, date, price } = req.body;
-        date = new Date(date);
+        date = new Date(+date);
         price = Number(price);
         Trip.findOne({
             departure: {$regex: new RegExp(departure, "i")},
@@ -65,6 +65,10 @@ router.get('/cart', (req, res) => {
 router.delete('/cart/:departure&:arrival&:date&:price', (req, res) => {
     let {departure, arrival, date, price} = req.params;
     date = new Date(+date);
+<<<<<<< HEAD
+=======
+    price = Number(price);
+>>>>>>> frontend
 
     Trip.findOne({
         departure: {$regex: new RegExp(departure, "i")},
