@@ -101,5 +101,6 @@ fetch('http://localhost:3000/bookings/cart')
                 });
                 tripInCard = [];
                 emptyCart();
+                window.location.assign('bookings.html');
             });
     });

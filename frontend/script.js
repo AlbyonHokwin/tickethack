@@ -1,115 +1,88 @@
+let tripInSearch = [];
 
-//affichage des voyages trouvés (dans index.html)
-document.querySelector("#search").addEventListener('click', 
-function(){
-    console.log('Click detected');
-    for(let i=0; i < trips.length; i++)
-{
-    const tripSelected = fetch(`./index.html/departure+${[i]}+arrival+${[i]}`)
- .then(response => response.json())
- .then(trips => {
-   document.querySelector("#container").innerHTML += `<div id="container">
-   <div class="trip">
-       <p><input type="text" id="departure" name="name" size="10">${trips.type.departure}</p>
-   
-       <p><input type="text" id="arrival" name="name" size="10">${trips.type.arrival}</p>
-   
-       <p><input type="date" id="start" name="trip-start"
-          value="2022-11-07"
-          min="2022-01-01" max="2022-12-31">${trips.type.date}</p>
+function emptySearchResults() {
+    document.querySelector('#searchResults').innerHTML = `
+        <div id="emptySearch">
+            <img id="noTripImg" src="images/notfound.png" alt="not found" />
+            <hr id="searchDivider>
+            <p>No trip found.</p>
+        </div>
+    `;
 
-          <p>${trips.type.price}</p>
-   
-          <p><button>Search</button></p>
-   
-   </div>
-   
-   <div class="result">
-   
-   
-   </div>
-   </div>`;
- });
+    tripInSearch = [];
 }
-})
 
-//ajout des voyages (dans cart.html)
-if (newTrip) {
-    $('#cart-dropdown').prepend('<li id="'+ id +'"><a href="'+ url +'">'+ departure +'<br><small>Quantité : <span class="qt">'+ qt +'</span></small></a></li>');
+function updateSearchResults(trips) {
+    document.querySelector('#searchResults').innerHTML = '<div id="notEmptySearch"></div>';
 
-    cartTrips.push({
-        id: id,
-        departure: departure,
-        arrival: arrival,
-        date: date,
-        price: price,
+    for (let trip of trips) {
+        let {departure, arrival, date, price} = trip;
+
+        date = new Date(date);
+        const hour = `0${date.getHours()}`.slice(-2);
+        const min = `0${date.getMinutes()}`.slice(-2);
+        hourStr = `${hour}:${min}`;
+
+        tripInSearch.push({
+            departure,
+            arrival,
+            date: date.getTime(),
+            price,
+        });
+
+        const newSearch = `
+            <div class="searchRow">
+                <div class="searchTravel">${departure} > ${arrival}</div>
+                <div class="searchHour">${hourStr}</div>
+                <div class="searchPrice">${price} €</div>
+                <button class="btnBook">Book</button>
+            </div>
+        `;
+
+        document.querySelector('#searchResults').insertAdjacentHTML('beforeend', newSearch);
+    }
+
+    document.querySelectorAll('.btnBook').forEach((btn, i) => {
+        btn.addEventListener('click', function() {
+            const trip = tripInSearch[i];
+            console.log(trip);
+            const urlToFetch = `http://localhost:3000/bookings/new`;
+            fetch(urlToFetch, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(trip)
+            }).then(response => response.json())
+                .then(results => {
+                    console.log(results);
+                    if (results.result) window.location.assign('cart.html');
+                })
+        });
     });
 }
 
+const today = new Date();
+const todayDay = `0${today.getDate()}`.slice(-2);
+const todayMonth = `0${1+today.getMonth()}`.slice(-2);
+const todayYear = today.getFullYear();
+const todayString = `${todayYear}-${todayMonth}-${todayDay}`;
+document.querySelector('#date').value = todayString;
 
-//suppression des voyages (dans cart.html)
-$('.delete-item').click(function() {
-    var $this = $(this);
-    var qt = parseInt($this.prevAll('.qt').html());
-    var id = $this.parent().parent().attr('data-id');
-    var artWeight = parseInt($this.parent().parent().attr('data-weight'));
-    var arrayId = 0;
-    var price;
+document.querySelector('#btnSearch').addEventListener('click', function () {
+    const departure = document.querySelector('#departure').value;
+    const arrival = document.querySelector('#arrival').value;
+    let date = document.querySelector('#date').value;
+    date = new Date(date).getTime();
+    const urlToFetch = `http://localhost:3000/trips/search/${departure}&${arrival}&${date}`;
 
-    // maj qt
-    inCartItemsNum -= qt;
-    $('#in-cart-items-num').html(inCartItemsNum);
-
-    // supprime l'item du DOM
-    $this.parent().parent().hide(600);
-    $('#'+ id).remove();
-
-    cartArticles.forEach(function(v) {
-        // on récupère l'id de l'article dans l'array
-        if (v.id == id) {
-            // on met à jour le sous total et retire l'article de l'array
-            // as usual, calcul sur des entiers
-            var itemPrice = v.price.replace(',', '.') * 1000;
-            subTotal -= (itemPrice * qt) / 1000;
-            weight -= artWeight * qt;
-            cartArticles.splice(arrayId, 1);
-
-            return false;
-        }
-
-        arrayId++;
-    })});
-
-//affichage des voyages réservés (dans bookings.html)
-document.querySelector("#purchase").addEventListener('click', 
-function(){
-    console.log('Click detected');
-    for(let i=0; i < trips.length; i++)
-{
-    const tripPurchased = fetch(`./index.html/departure+${[i]}+arrival+${[i]}`)
- .then(response => response.json())
- .then(trips => {
-   document.querySelector("#container").innerHTML += `<div id="container">
-   <div class="trip">
-       <p><input type="text" id="departure" name="name" size="10">${trips.type.departure}</p>
-   
-       <p><input type="text" id="arrival" name="name" size="10">${trips.type.arrival}</p>
-   
-       <p><input type="date" id="start" name="trip-start"
-          value="2022-11-07"
-          min="2022-01-01" max="2022-12-31">${trips.type.date}</p>
-
-          <p>Departure in ${trips.type.time}hours</p>
-   
-          <p><button>Search</button></p>
-   
-   </div>
-   
-   <div class="result">
-   
-   
-   </div>
-   </div>`;
- });
-}
+    fetch(urlToFetch).then(response => response.json())
+        .then(trips => {
+            if (!trips.result) emptySearchResults;
+            else updateSearchResults(trips.trips);
+        })
+        .catch(error => {
+            console.error(error);
+            emptySearchResults();
+        })
 });
