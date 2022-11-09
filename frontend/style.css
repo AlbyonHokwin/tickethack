@@ -1,9 +1,92 @@
 body{
     background-color: lightgray;
-
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
 }
 
-.box{
+#container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(12, 1fr);
+    height: 100%;
+    width: 100%;
+    background-image:url("./images/background.jpg") ;
+    background-position: center center;
+    background-size: cover;
+}
+
+#header{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 15vh;
+    background-color: white;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#index{
+    width: 100px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#cartbooking a {
+margin: 0 10px;
+}
+
+#tagline{
+grid-row-start: 2;
+grid-row-end: 4;
+grid-column-start: 1;
+grid-column-end: 2;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#tagline h1{
+margin: 0;
+}
+
+#tagline h2{
+margin: 0;
+}
+
+#search{
+grid-row-start: 4;
+grid-row-end: 10;
+grid-column-start: 1;
+grid-column-end: 2;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+
+#search div{
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
+    width: 20%;
+    margin: 0 30px;
+}
+
+#footer{
+grid-row-start: 10;
+grid-row-end: 13;
+grid-column-start: 1;
+grid-column-end: 2;
+}
+
+/*.box{
     background-color: white;
     border: 10px solid white;
     display: flex;
@@ -15,12 +98,12 @@ body{
   width: 100%;
   font-family: "Gill Sans", sans-serif;
   grid-template-columns: 30px auto 30px;
-}
+}*/
 
 
 
 
-#container{
+/*#container{
     border: 500px white;
     display: flex;
   justify-content: space-between;
@@ -28,9 +111,9 @@ body{
   grid-row-end: 12;
   background-image:url("/Users/yassinetazit/Desktop/tickethack/frontend/images/background.jpg");
   background-position: center center;
-}
+}*/
 
-.trip{
+/*.trip{
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 30px;
@@ -41,9 +124,9 @@ body{
     padding-top: 250px;
     text-align: left;
     font-family: "Gill Sans", sans-serif;
-}
+}*/
 
-.result{
+/*.result{
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 30px;
@@ -55,4 +138,4 @@ body{
     text-align: right;
     font-family: "Gill Sans", sans-serif;
     background-image: url("/Users/yassinetazit/Desktop/tickethack/frontend/images/train.png");
-}
+}*/

@@ -1,39 +1,52 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Titre de la page</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
-    <header>
-        <nav class="box">
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/index.html">tickethack</a>
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/cart.html">Cart</a>
-            <a href="/Users/yassinetazit/Desktop/tickethack/frontend/bookings.html">Bookings</a>
-          </nav>
-    </header>
-
     <div id="container">
-<div class="trip">
-    <p><input type="text" id="departure" name="name" size="10"></p>
+        <div id="header">
+            <a href="./index.html" id="index">tickethack</a>
 
-    <p><input type="text" id="arrival" name="name" size="10"></p>
+            <div id="cartbooking">
+            <a href="./cart.html">Cart</a>
 
-    <p><input type="date" id="start" name="trip-start"
-       value="2022-11-07"
-       min="2022-01-01" max="2022-12-31"></p>
+            <a href="./bookings.html">Bookings</a>
+            </div>
+        </div>
 
-       <p><button>Search</button></p>
+        <div id="tagline">
+<h1>Explore the world effortlessly by train!</h1>
 
-</div>
+<h2>Compare, book and enjoy cheap prices for train tickets: your journey starts on Tickethack.</h2>
+        </div>
 
-<div class="result">
+        <div id="search">
+            <div id="inputs">
+<input type="text" id="departure" placeholder="Departure">
+<input type="text" id="arrival" placeholder="Arrival">
 
+<input type="date" id="date" placeholder="date">
 
-</div>
-</div>
+<button id="btnSearch">Search</button>
+            </div>
+
+            <div id="searchResults">
+
+            </div>
+        </div>
+
+        <div id="footer">
+
+        </div>
+
+    </div>
+
 </body>
+
 </html>
