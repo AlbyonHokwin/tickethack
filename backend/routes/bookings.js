@@ -61,10 +61,10 @@ router.get('/cart', (req, res) => {
 });
 
 // Delete selected booking NOT purchased - For cart.html
+// Date received in ms
 router.delete('/cart/:departure&:arrival&:date&:price', (req, res) => {
     let {departure, arrival, date, price} = req.params;
-    date = new Date(date);
-    price = Number(price);
+    date = new Date(+date);
 
     Trip.findOne({
         departure: {$regex: new RegExp(departure, "i")},
@@ -82,10 +82,11 @@ router.delete('/cart/:departure&:arrival&:date&:price', (req, res) => {
 });
 
 // Switch status of isPurchased field from false to true - Booking move from cart to bookings
+// Date received in ms
 router.put('/purchased', (req, res) => {
     if (checkBody(req.body, ["departure", "arrival", "date", "price"])) {
         let { departure, arrival, date, price } = req.body;
-        date = new Date(date);
+        date = new Date(+date);
         price = Number(price);
         Trip.findOne({
             departure: {$regex: new RegExp(departure, "i")},
