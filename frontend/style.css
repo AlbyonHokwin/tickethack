@@ -1,58 +1,165 @@
-body{
-    background-color: lightgray;
-
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
 }
 
-.box{
+#container {
+    height: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: 1fr;
+    background-image: url('images/background.jpg');
+    background-position: center center;
+    background-size: cover;
+}
+
+#header {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: white;
-    border: 10px solid white;
+    padding: 0 20px;
+}
+
+#tickethack {
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+#cartBooking a {
+    width: 10%;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 0 10px;
+}
+
+#tagline {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 2;
     display: flex;
-  justify-content: space-between;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 9;
-  width: 100%;
-  font-family: "Gill Sans", sans-serif;
-  grid-template-columns: 30px auto 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
+#tagline h1 {
+    margin: 0;
+    font-size: 30px;
+}
 
+#tagline h2 {
+    margin: 0;
+    font-size: 15px;
+}
 
-
-#container{
-    border: 500px white;
+#search {
+    grid-row-start: 4;
+    grid-row-end: 10;
+    grid-column-start: 1;
+    grid-column-end: 2;
     display: flex;
-  justify-content: space-between;
-  grid-row-start: 2;
-  grid-row-end: 12;
-  background-image:url("/Users/yassinetazit/Desktop/tickethack/frontend/images/background.jpg");
-  background-position: center center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-.trip{
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: #FFFFFF;
-    padding-left: 250px;
-    padding-right: 250px;
-    padding-top: 250px;
-    text-align: left;
-    font-family: "Gill Sans", sans-serif;
+#search>div {
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
+    width: 30%;
+    max-width: 400px;
+    margin: 0 50px;
 }
 
-.result{
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: #FFFFFF;
-    padding-left: 250px;
-    padding-right: 250px;
-    padding-top: 250px;
-    text-align: right;
-    font-family: "Gill Sans", sans-serif;
-    background-image: url("/Users/yassinetazit/Desktop/tickethack/frontend/images/train.png");
+#inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#inputs input, button {
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    background-color: #EFF2F1;
+    font-size: 20px;
+}
+
+#travel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#travelDivider {
+    margin: 0;
+    width: 95%;
+    border-top: 0.5px solid #77958E;
+}
+
+#btnSearch {
+    background-color: #459E85;
+    color: white;
+}
+
+#searchResults {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.searchRow {
+    background-color: #EFF2F1;
+    width: 90%;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.btnBook {
+    background-color: #459E85;
+    color: white;
+    font-size: 12px;
+    padding: 0 5px;
+    width: min-content;
+    height: 35px;
+}
+
+#footer {
+    grid-row-start: 10;
+    grid-row-end: 13;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
