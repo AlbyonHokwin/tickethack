@@ -64,7 +64,7 @@ body {
 }
 
 #notEmptycart {
-  min-width: 500px;
+  min-width: max-content;
   max-width: 80%;
   min-height: 200px;
   max-height: 80%;
@@ -78,7 +78,8 @@ body {
 
 .cartRow {
   background-color: #EFF2F1;
-  width: 80%;
+  min-width: 70%;
+  max-width: 80%;
   height: 50px;
   border-radius: 5px;
   display: flex;
@@ -86,7 +87,41 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  margin: 7px 0;
+  margin: 10px 0;
+}
+
+.cartRow div {
+  white-space: nowrap;
+}
+
+.cartTravel {
+  width: 200px;
+  text-align: left;
+}
+
+.cartDay {
+  width: 140px;
+  text-align: left;
+}
+
+.cartHour {
+  width: 140px;
+  text-align: left;
+}
+
+.cartPrice {
+  width: 120px;
+  text-align: left;
+}
+
+.cartDelete {
+  height: 35px;
+  width: 35px;
+  background-color: #459E85;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
 }
 
 #cartFooter {
@@ -107,6 +142,7 @@ body {
 
 #btnPurchase {
   background-color: #459E85;
+  border: none;
   border-radius: 5px;
   color: white;
   padding: 5px 15px;

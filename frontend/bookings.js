@@ -32,7 +32,6 @@ function filledBookings(bookings) {
         let { departure, arrival, date, price } = booking.trip;
 
         date = new Date(date);
-        console.log(date);
         const day = `0${date.getDate()}`.slice(-2);
         const month = `0${date.getMonth() + 1}`.slice(-2);
         const year = `${date.getFullYear()}`.slice(-2);
